@@ -3,6 +3,34 @@
       <%# <link rel="stylesheet" href="/styles.css" /> %>
    </head>
    <body>
-    <%= @weather_data['weather'][0]['main'] %>
+   <div class="form">
+      <h1>Enter the name of a city:</h1>
+      <form action="/" method="post">
+      <label for="city">City:</label><br>
+      <input type="text" id="city" name="city" class="input-box"><br>
+      </form>
+    </div>
+    <br>
+    <h1 class="city_header">Location: <%= @location %></h1>
+    <h1 class="weather_header">Description: <%= @description %></h1>
+    <h1 class="weather_header">Current Temperature: <%= @current_temp %></h1>
+    <h1 class="weather_header">Feels Like: <%= @feels_like %></h1>
+    <h1 class="weather_header">Minimum Temperature: <%= @wmin_temp %></h1>
+    <h1 class="weather_header">Maximum Temperature: <%= @max_temp %></h1>
+    <h1 class="weather_header">Humidity: <%= @humidity %></h1>
+    <h1 class="weather_header">Cloud Coverage: <%= @cloud_coverage %></h1>
+    <h1 class="weather_header">Sunrise: <%= @sunrise %></h1>
+    <h1 class="weather_header">Sunset: <%= @sunset %></h1>
    </body>
 </html>
+
+
+
+
+
+
+
+<%# if description c
+ontains clear sky -> sunshine
+contains rain -> rain
+contains snow -> snow %>
