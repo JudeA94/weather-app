@@ -1,6 +1,6 @@
 <html>
    <head>
-      <%# <link rel="stylesheet" href="/styles.css" /> %>
+      <link rel="stylesheet" href="/style.css" />
    </head>
    <body>
    <div class="form">
@@ -8,29 +8,23 @@
       <form action="/" method="post">
       <label for="city">City:</label><br>
       <input type="text" id="city" name="city" class="input-box"><br>
+      <input type="submit" value="Submit">
       </form>
     </div>
     <br>
+    <div class="weather-info">
     <h1 class="city_header">Location: <%= @location %></h1>
-    <h1 class="weather_header">Description: <%= @description %></h1>
-    <h1 class="weather_header">Current Temperature: <%= @current_temp %></h1>
-    <h1 class="weather_header">Feels Like: <%= @feels_like %></h1>
-    <h1 class="weather_header">Minimum Temperature: <%= @wmin_temp %></h1>
-    <h1 class="weather_header">Maximum Temperature: <%= @max_temp %></h1>
-    <h1 class="weather_header">Humidity: <%= @humidity %></h1>
-    <h1 class="weather_header">Cloud Coverage: <%= @cloud_coverage %></h1>
-    <h1 class="weather_header">Sunrise: <%= @sunrise %></h1>
-    <h1 class="weather_header">Sunset: <%= @sunset %></h1>
+    <h1 class="weather-header">Description: <%= @description %></h1>
+    <h1><%= @icon_url %></h1>
+    <div class="icon"><img src="https://openweathermap.org/img/wn/<%= @icon_code %>@2x.png" alt="Weather Icon"></div>
+    <h1 class="weather-header">Current Temperature: <%= @current_temp %></h1>
+    <h1 class="weather-header">Feels Like: <%= @feels_like %></h1>
+    <h1 class="weather-header">Minimum Temperature: <%= @min_temp %></h1>
+    <h1 class="weather-header">Maximum Temperature: <%= @max_temp %></h1>
+    <h1 class="weather-header">Humidity: <%= @humidity %></h1>
+    <h1 class="weather-header">Cloud Coverage: <%= @cloud_coverage %></h1>
+    <h1 class="weather-header">Sunrise: <%= @sunrise %></h1>
+    <h1 class="weather-header">Sunset: <%= @sunset %></h1>
+    </div>
    </body>
 </html>
-
-
-
-
-
-
-
-<%# if description c
-ontains clear sky -> sunshine
-contains rain -> rain
-contains snow -> snow %>

@@ -21,6 +21,7 @@ class Application < Sinatra::Base
     api_url = "http://api.openweathermap.org/data/2.5/weather?units=metric&q=#{city}&appid=#{api_key}"
     data = RestClient.get(api_url)
     weather_data = JSON.parse(data)
+    @icon_code = weather_data['weather'][0]['icon']
     @location = "#{weather_data['name']}, #{weather_data['sys']['country']}"
     @description = weather_data['weather'][0]['description'].capitalize
     @current_temp = "#{weather_data['main']['temp'].round}\u00B0C"
