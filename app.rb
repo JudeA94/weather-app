@@ -15,7 +15,8 @@ class Application < Sinatra::Base
 
   post '/' do
     city = params[:city]
-    api_key = '513491c5ff1a6cc04bb47081b6e1bad1'
+    api_key = ENV['WEATHERAPIKEY']
+    p api_key
     api_url = "http://api.openweathermap.org/data/2.5/weather?units=metric&q=#{city}&appid=#{api_key}"
     begin
       data = RestClient.get(api_url)
