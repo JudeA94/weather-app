@@ -5,8 +5,6 @@ require 'json'
 require 'time'
 
 class Application < Sinatra::Base
-  # This allows the app code to refresh
-  # without having to restart the server.
   configure :development do
     register Sinatra::Reloader
   end
@@ -19,7 +17,12 @@ class Application < Sinatra::Base
     city = params[:city]
     api_key = '513491c5ff1a6cc04bb47081b6e1bad1'
     api_url = "http://api.openweathermap.org/data/2.5/weather?units=metric&q=#{city}&appid=#{api_key}"
-    data = RestClient.get(api_url)
+    begin
+      data = RestClient.get(api_url)
+    rescue RestClient::ExceptionWithResponse
+      @message = 'City not found!'
+      return erb(:index)
+    end
     weather_data = JSON.parse(data)
     @icon_code = weather_data['weather'][0]['icon']
     @location = "#{weather_data['name']}, #{weather_data['sys']['country']}"
@@ -35,5 +38,9 @@ class Application < Sinatra::Base
     sunset = weather_data['sys']['sunset'].to_s
     @sunset = DateTime.strptime(sunset, '%s').strftime('%H:%M')
     return erb(:weather)
+  end
+
+  not_found do
+    return erb(:oops)
   end
 end

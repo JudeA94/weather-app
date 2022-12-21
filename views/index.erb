@@ -5,6 +5,7 @@
    <body>
     <div class="form">
       <h1>Enter the name of a city:</h1>
+      <h1 class="error-message"><%= @message %></h1>
       <form action="/" method="post">
       <input type="text" id="city" name="city" class="input-box"><br>
       <input type="submit" value="Submit">

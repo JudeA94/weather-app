@@ -1,12 +1,12 @@
 .weather-info {
-    margin: auto;
-    width: 60%;
-    border: 10px solid #7fa0cb;
-    border-radius: 20px;
-    padding: 10px;
-    text-align: center;
-    background-color: #b0c4de;
-  }
+  margin: auto;
+  width: 60%;
+  border: 10px solid #7fa0cb;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+  background-color: #b0c4de;
+}
 
 .form {
   margin: auto;
@@ -28,4 +28,8 @@
 
 .weather-header {
   font-weight: normal;
+}
+
+.error-message {
+  color: red;
 }
