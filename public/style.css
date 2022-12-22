@@ -1,11 +1,11 @@
 .weather-info {
   margin: auto;
   width: 60%;
-  border: 10px solid #7fa0cb;
+  border: 0px solid #7fa0cb;
   border-radius: 20px;
   padding: 10px;
   text-align: center;
-  background-color: #b0c4de;
+  background-color: rgba(228, 221, 254, 0.7);
 }
 
 .form {
@@ -23,13 +23,28 @@
 }
 
 .city-header {
-  font-weight: bold;
+  font-weight: 900;
 }
 
 .weather-header {
-  font-weight: normal;
+  font-weight: 700;
 }
 
 .error-message {
   color: red;
+}
+
+.icon {
+  height: 150px;
+  width: 150px;
+}
+
+.description-icon-parent {
+  margin: 1rem;
+  text-align: center;
+
+}
+.description-icon-child {
+  display: inline-block;
+  vertical-align: middle;
 }

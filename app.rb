@@ -3,10 +3,11 @@ require 'sinatra/reloader'
 require 'rest-client'
 require 'json'
 require 'time'
+require 'unsplash'
 
 class Application < Sinatra::Base
   configure :development do
-    register Sinatra::Reloader
+  register Sinatra::Reloader
   end
 
   get '/' do
@@ -23,6 +24,13 @@ class Application < Sinatra::Base
       @message = 'City not found!'
       return erb(:index)
     end
+    unsplash_key = ENV['UNSPLASHKEY']
+    unsplash_url = "https://api.unsplash.com/search/photos?query=#{city}&client_id=#{unsplash_key}"
+    img_data = RestClient.get(unsplash_url)
+    image_data = JSON.parse(img_data)
+    if !image_data.nil?
+      @background_url = image_data['results'][0]['urls']['raw']
+    end  
     weather_data = JSON.parse(data)
     @icon_code = weather_data['weather'][0]['icon']
     @location = "#{weather_data['name']}, #{weather_data['sys']['country']}"
@@ -38,9 +46,5 @@ class Application < Sinatra::Base
     sunset = weather_data['sys']['sunset'].to_s
     @sunset = DateTime.strptime(sunset, '%s').strftime('%H:%M')
     return erb(:weather)
-  end
-
-  not_found do
-    return erb(:oops)
   end
 end

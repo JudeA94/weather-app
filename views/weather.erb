@@ -1,6 +1,15 @@
 <html>
    <head>
-      <link rel="stylesheet" href="/style.css" />
+      <style>
+         body {
+            background-image: url('<%= @background_url %>');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            }
+      </style>
+            <link rel="stylesheet" href="/style.css" />
+
    </head>
    <body>
    <div class="form">
@@ -12,10 +21,11 @@
     </div>
     <br>
     <div class="weather-info">
-    <h1 class="city_header">Location: <%= @location %></h1>
-    <h1 class="weather-header">Description: <%= @description %></h1>
-    <h1><%= @icon_url %></h1>
-    <div class="icon"><img src="https://openweathermap.org/img/wn/<%= @icon_code %>@2x.png" alt="Weather Icon"></div>
+    <h1 class="city-header">Location: <%= @location %></h1>
+    <div class="description-icon-parent">
+    <div class="description-icon-child"><h1 class="weather-header">Description: <%= @description %></h1></div>
+    <div class="description-icon-child"><img class="icon" src="https://openweathermap.org/img/wn/<%= @icon_code %>@2x.png" alt="Weather Icon"></div>
+    </div>
     <h1 class="weather-header">Current Temperature: <%= @current_temp %></h1>
     <h1 class="weather-header">Feels Like: <%= @feels_like %></h1>
     <h1 class="weather-header">Minimum Temperature: <%= @min_temp %></h1>
